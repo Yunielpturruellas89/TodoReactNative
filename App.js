@@ -30,20 +30,25 @@ import {
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text style={styles.container}>Ezequieljhkjhkjh </Text>
-        </View>
-      
-    </SafeAreaView>
+    <View style={styles.container}>
+        <Text style={styles.heading}>TODO LIST</Text>
+    </View>
     
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#E0e0e0',
-    padding: 15,
+    flex: 1,
+    backgroundColor: '#1E1A3C',
+  },
+  heading: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: '600',
+    marginTop: 30,
+    marginBottom: 10,
+    marginLeft: 20,
   },
 });
 
