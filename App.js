@@ -10,9 +10,8 @@ import React,{useState} from 'react';
 import {Keyboard, ScrollView, StyleSheet, Text, View
 } from 'react-native';
 import HeaderTodo from './components/header';
-import TaskInputField from './components/TaskInputField';
 import TaskInputField2 from './components/TaskInputField2';
-import TaskItem from './components/TaskItem';
+import Item from './components/Item';
 
 
 const App = () => {
@@ -32,13 +31,13 @@ const App = () => {
     <View style={styles.container}>
        <ScrollView style={styles.scrollView}>
       <HeaderTodo/>
-      <TaskInputField addTask={addTask}/>
+
       <TaskInputField2 addTask={addTask}/>
         {
         tasks.map((task, index) => {
           return (
             <View key={index} style={styles.taskContainer}>
-              <TaskItem index={index + 1} task={task} deleteTask={() => deleteTask(index)}/>
+              <Item index={index + 1} task={task} deleteTask={() => deleteTask(index)}/>
             </View>
           );
         })

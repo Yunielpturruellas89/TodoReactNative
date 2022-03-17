@@ -19,46 +19,62 @@
      return (
          
         
-           <KeyboardAvoidingView 
+        <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
-         <TextInput style={styles.inputField} value={task} onChangeText={text => setTask(text)} placeholder={'New item...2'} placeholderTextColor={'#000000'}/>
+        <View style={styles.InputContainer}>
+        <TextInput style={styles.inputField} value={task} onChangeText={text => setTask(text)} placeholder={'New item...'} placeholderTextColor={'#000000'}/>
          
-         <TouchableOpacity onPress={() => handleAddTask(task)}>
+        </View>
+        <View style={styles.ButtonContainer}>
+        <TouchableOpacity onPress={() => handleAddTask(task)}>
            <View style={styles.button}>
               <Text>+</Text>
            </View>
          </TouchableOpacity>
-            </KeyboardAvoidingView>
+        </View>
+        </KeyboardAvoidingView>
          
      );
  }
  
  const styles = StyleSheet.create({
-     container: {
-         borderColor: '#3E3364',
-         backgroundColor: '#fff',
-         borderWidth: 1,
-         marginHorizontal: 20,
-         borderRadius: 12,
-         flexDirection: 'row',
-         alignItems: 'center',
-         justifyContent: 'space-between',
-         paddingHorizontal: 10,
-         
-     },
-     inputField: {
+    container: {
+        flexDirection: 'row',
+        marginHorizontal: 20,
+        height: 40,
+        
+    },
+    ButtonContainer: {
+        
+        width: 40,
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    InputContainer: {
+        borderColor: '#3E3364',
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderRadius: 5,
+        marginRight: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flex: 1,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        
+    },
+    
+    inputField: {
          color: '#000000',
          height: 50,
-         flex: 2,
+         flex: 1,
      },
-     button: {
-         height: 30,
-         width: 30,
-         borderRadius: 5,
-         backgroundColor: '#fff',
-         alignItems: 'center',
-         justifyContent: 'center'
-     },
+     
+    
  });
