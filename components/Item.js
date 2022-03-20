@@ -5,12 +5,11 @@
  * @format
  * @flow strict-local
  */
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 import React from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,TouchableOpacity,
+  StyleSheet, TouchableOpacity,
   Text,
   View,
 } from 'react-native';
@@ -21,40 +20,39 @@ import {
 
 const Item = (props) => {
   return (
-    <View style={styles.container}>
-            <View style={styles.taskContainer}>
-                <Text style={styles.task}>{props.task}</Text>
-                <TouchableOpacity onPress={() => props.deleteTask()}>
-                <View style={styles.indexContainer}>
-                <Text style={styles.delete}>x</Text>
-                </View>
-                </TouchableOpacity>
-            </View>
+
+    <TouchableOpacity style={styles.container} onPress={() => props.completeTask()}>
+      <View style={[(props.task.complete) ? styles.taskContainerComplete : styles.taskContainer]}>
+        <Text style={styles.task}>{props.task.text}</Text>
+
+        <View style={styles.indexContainer}>
+          <TouchableOpacity onPress={() => props.deleteTask()}>
+            <Icon name='md-trash-sharp' size={20} color="#fff" />
+          </TouchableOpacity>
         </View>
-    
+      </View>
+    </TouchableOpacity>
+
+
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginHorizontal: 20,
-    
-},
-indexContainer: {
-    
-    
+    height: 50,
+  },
+  indexContainer: {
     paddingVertical: 2,
     alignItems: 'center',
     justifyContent: 'center',
     width: 50,
-    height: 50,
-},
-index: {
+  },
+  index: {
     color: '#fff',
     fontSize: 15,
-},
-taskContainer: {
+  },
+  taskContainer: {
     borderColor: '#3E3364',
     borderWidth: 1,
     backgroundColor: '#87cefa',
@@ -66,15 +64,28 @@ taskContainer: {
     paddingHorizontal: 10,
     paddingVertical: 5,
     minHeight: 40,
-},
-task: {
+  },
+  taskContainerComplete: {
+    borderColor: '#fff',
+    borderWidth: 1,
+    backgroundColor: '#191970',
+    borderRadius: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flex: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    minHeight: 40,
+  },
+  task: {
     color: '#fff',
     width: '90%',
     fontSize: 16,
-},
-delete: {
+  },
+  delete: {
     marginLeft: -5,
-},
+  },
 
 });
 
