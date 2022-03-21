@@ -10,7 +10,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, View
 } from 'react-native';
 import HeaderTodo from './components/header';
-import BodyTask from './components/BodyTask';
+import ManageTasks from './components/ManageTasks2';
 
 const App = () => {
   
@@ -18,9 +18,8 @@ const App = () => {
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <HeaderTodo />
-        <BodyTask/>
+        <ManageTasks/>
        </ScrollView>
-
     </View>
 
   );

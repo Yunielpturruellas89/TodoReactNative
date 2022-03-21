@@ -5,9 +5,9 @@
  * @format
  * @flow strict-local
  */
-import Icon from 'react-native-vector-icons/dist/Ionicons';
-
-import React, { useState } from 'react';
+import DeviceStorage from './DeviceStorage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -20,14 +20,16 @@ import Item from './Item';
 
 
 
-const BodyTask = (props) => {
+const ManageTasks = (props) => {
   const [tasks, setTasks] = useState([
-    { text: "Create the UI", complete: false },
-    { text: "Create the", complete: false },
-    { text: "yuyuy2", complete: true },
-    { text: "yuyuy3", complete: false }
+    { text: "Create the components", complete: false },
+    /*{ text: "Create the UI for each component", complete: false },
+    { text: "Create the logic for each component", complete: true },*/
+    { text: "Test the aplication", complete: true }
   ]);
 
+    
+  
   const addTask = (text) => {
     Keyboard.dismiss();
     if (text == null) return;
@@ -36,6 +38,7 @@ const BodyTask = (props) => {
       complete: false
     }
      setTasks([...tasks, newTask]);
+     saveData(newTask)
 
   }
   const completeTask = (taskIndex) => {
@@ -67,7 +70,24 @@ const BodyTask = (props) => {
     );
     
   }
-
+  const saveData = async (newTask) => {
+  
+    const storedData = await AsyncStorage.getItem('tasks');
+    const storedDataParsed = JSON.parse(storedData);
+  
+    let newData = [];
+  
+    if (storedData === null) {
+      // save
+      await AsyncStorage.setItem('tasks', JSON.stringify(tasks));
+    } else {
+      newData = JSON.stringify([...newTask]);
+      await AsyncStorage.setItem('tasks', newData);
+    }
+    setTasks(newData);
+    console.log(newData)
+    Keyboard.dismiss();
+  };
 
   return (
     <View>
@@ -92,4 +112,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default BodyTask;
+export default ManageTasks;

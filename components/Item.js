@@ -20,7 +20,7 @@ import {
 
 const Item = (props) => {
   return (
-
+    
     <TouchableOpacity style={styles.container} onPress={() => props.completeTask()}>
       <View style={[(props.task.complete) ? styles.taskContainerComplete : styles.taskContainer]}>
         <Text style={styles.task}>{props.task.text}</Text>

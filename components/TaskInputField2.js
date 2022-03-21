@@ -25,7 +25,7 @@ export default TaskInputField = (props) => {
             style={styles.container}
         >
             <View style={styles.InputContainer}>
-                <TextInput style={styles.inputField} value={task} onChangeText={text => setTask(text)} placeholder={'New item...'} placeholderTextColor={'#000000'} />
+                <TextInput maxLength={28} style={styles.inputField} value={task} onChangeText={text => setTask(text)} placeholder={'New item...'} placeholderTextColor={'#000000'} />
 
             </View>
             <View style={styles.ButtonContainer}>
